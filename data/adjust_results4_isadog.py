@@ -70,6 +70,7 @@ def adjust_results4_isadog(results_dic, dogfile):
     key_list = list()
     for key in results_dic:
       key_list.append(key)
+    print(key_list)
 
     dognames_dict = dict()
     index = 0 # Counter for lines in dognames.txt and be used as key for dognames_dict.
@@ -88,12 +89,20 @@ def adjust_results4_isadog(results_dic, dogfile):
       # Split the line by commas, strip each word, and create a list.
       dogs_list = [word.strip() for word in line.split(',')]
 
-      for ind in range(0, len(results_dic[0]), 1): # Range is adapted for the list of pet images labels.
+      # TEST
+      for ind in range(0, len(results_dic[key_list[0]]), 1): # Range is adapted for the list of pet images labels.
+        for dog in dogs_list:
+            # Check if there is at least one string in the list
+          if dog in results_dic[key_list[ind]][0]: print("Found!")
+          else: print("There was no luck here!!")
+
+    '''
+      for ind in range(0, len(results_dic[key_list[0]]), 1): # Range is adapted for the list of pet images labels.
         for dog in dogs_list:
           # Check if any of the identified dogs of the line is in the pet image labels and fill index3.
-          if dog in results_dic[key_list[0]][ind] : results_dic.extend(True)
-          else: results_dic.extend(False)
+          if dog in results_dic[key_list[ind]][0] : results_dic.extend(True)
+          else: results_dic[key_list[ind]].extend(False)
           # Check if any of the identified dogs of the line is in the classifier labels and fill index4.
-          if dog in results_dic[key_list[1]][ind] : results_dic.extend(True)
-          else: results_dic.extend(False) 
-    
+          if dog in results_dic[key_list[ind]][1] : results_dic.extend(True)
+          else: results_dic[key_list[ind]].extend(False) 
+    '''
