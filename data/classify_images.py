@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/classify_images.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                 
+# PROGRAMMER: Pablo Bartolomé Molina
+# DATE CREATED: 04/08/2024, 18:40 CEST                                 
 # REVISED DATE: 
 # PURPOSE: Create a function classify_images that uses the classifier function 
 #          to create the classifier labels and then compares the classifier 
@@ -22,6 +22,7 @@
 ##
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
+from os import listdir
 
 # TODO 3: Define classify_images function below, specifically replace the None
 #       below by the function definition of the classify_images function. 
@@ -65,4 +66,27 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """
-    None 
+    temp_dict = dict()
+    # Extract keys into a list.
+    keys_list = list(results_dic.keys())
+    # Extract values into a list.
+    labels_list = list(results_dic.values())
+    # List for classifier labels.
+    class_list = list()
+
+    # Classify an image
+    filename_list = listdir(images_dir) # List of filenames.
+    for imagepath in filename_list:
+      img_path = images_dir + imagepath
+      # Convert the returned value into lowercases to avoid false negatives in the identification.
+      classed_item = classifier(img_path, model).lower()
+      class_list.append(classed_item)
+    
+    # Debugging purposes in case we have different number of previous labels and classifier labels.
+    try:
+      for index in range(0,len(labels_list), 1):
+        results_dic[keys_list[index]] = [labels_list[index], class_list[index], labels_list[index] in class_list[index]]
+    except:
+      # Error message is printed to know there is an error.
+      print('\nLength for previous labels and classifier labels is not the same.')
+      print('\nlabels_list {}, class_list {}.', len(labels_list), len(class_list))
