@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/adjust_results4_isadog.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                 
+# PROGRAMMER:  Pablo Bartolomé Molina
+# DATE CREATED: 04/08/2024, 20:10PM CEST,                                
 # REVISED DATE: 
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
@@ -66,5 +66,34 @@ def adjust_results4_isadog(results_dic, dogfile):
                maltese) (string - indicates text file's filename)
     Returns:
            None - results_dic is mutable data type so no return needed.
-    """           
-    None
+    """
+    key_list = list()
+    for key in results_dic:
+      key_list.append(key)
+
+    dognames_dict = dict()
+    index = 0 # Counter for lines in dognames.txt and be used as key for dognames_dict.
+
+    with open(dogfile, 'r') as file:  # Open to read the file with dognames.
+      # Each line is added as a new element.
+      for line in file:
+          dognames_dict[index] = line.rstrip()  # strip() to remove any trailing whitespace
+    
+    '''
+    # Check if each dogname is in the results_dic either for the Classifier or the Pet Images.
+    # In some cases we have several items separated by a comma, so we need to check each one.
+    # It happens in dognames but also on results_dic.
+    ''' 
+    for index, line in dognames_dict.items():
+      # Split the line by commas, strip each word, and create a list.
+      dogs_list = [word.strip() for word in line.split(',')]
+
+      for ind in range(0, len(results_dic[0]), 1): # Range is adapted for the list of pet images labels.
+        for dog in dogs_list:
+          # Check if any of the identified dogs of the line is in the pet image labels and fill index3.
+          if dog in results_dic[key_list[0]][ind] : results_dic.extend(True)
+          else: results_dic.extend(False)
+          # Check if any of the identified dogs of the line is in the classifier labels and fill index4.
+          if dog in results_dic[key_list[1]][ind] : results_dic.extend(True)
+          else: results_dic.extend(False) 
+    
