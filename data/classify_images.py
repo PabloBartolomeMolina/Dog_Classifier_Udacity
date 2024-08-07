@@ -3,7 +3,7 @@
 # */AIPND-revision/intropyproject-classify-pet-images/classify_images.py
 #                                                                             
 # PROGRAMMER: Pablo Bartolomé Molina
-# DATE CREATED: 04/08/2024, 18:40 CEST                                 
+# DATE CREATED: 04/08/2024, 18:40 CEST, 07/08/2024, 22:10PM CEST                               
 # REVISED DATE: 
 # PURPOSE: Create a function classify_images that uses the classifier function 
 #          to create the classifier labels and then compares the classifier 
@@ -85,7 +85,7 @@ def classify_images(images_dir, results_dic, model):
     # Debugging purposes in case we have different number of previous labels and classifier labels.
     try:
       for index in range(0,len(labels_list), 1):
-        results_dic[keys_list[index]] = [labels_list[index], class_list[index], labels_list[index] in class_list[index]]
+        results_dic[keys_list[index]] = [labels_list[index], class_list[index], int(labels_list[index] in class_list[index])]
     except:
       # Error message is printed to know there is an error.
       print('\nLength for previous labels and classifier labels is not the same.')
