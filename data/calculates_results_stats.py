@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/calculates_results_stats.py
 #                                                                             
-# PROGRAMMER:
-# DATE CREATED:                                  
+# PROGRAMMER: Pablo Bartolomé Molina
+# DATE CREATED: 10/08/2024, 09:25PM CEST                                 
 # REVISED DATE: 
 # PURPOSE: Create a function calculates_results_stats that calculates the 
 #          statistics of the results of the programrun using the classifier's model 
@@ -70,4 +70,52 @@ def calculates_results_stats(results_dic):
     """        
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
-    return None
+    results_stats_dic = dict()
+
+    # Initialize all variables with information from results_stats_dic to 0.0, where:
+    # A : Number of Correct Dog Matches;
+    # B : Number of Dog Images;
+    # C : Number of Correct Not-a-Dog Images;
+    # D : Number of Not-a-Dog Images;
+    # E : Number of Correct Dog Breeds;
+    # Y : Number of Label Matches;
+    # Z : Number of images.
+    A = B = C = D = E = Y = Z = 0.0
+
+    # Z : Number of images. It can be directly calculated.
+    Z = len(results_dic)
+
+    for dog in results_dic:
+        # A : Number of Correct Dog Matches & C : Number of Correct Not-a-Dog Images.
+        # A & C can be calculated with an if-elif to minimize computation time.
+        if results_dic[dog][3] is 1 and results_dic[dog][4] is 1 : A += 1
+        elif results_dic[dog][3] is 0 and results_dic[dog][4] is 0 : C += 1
+        
+        # B : Number of Dog Images. Can be calculated with the value of the 3rd index.
+        if results_dic[dog][3] is 1 : B += 1 
+
+        # E : Number of Correct Dog Breeds & Y : Number of Label Matches
+        # With this structure, we can reuse the condition for Y as it is a subset of the conditions for E.
+        if results_dic[dog][2] is 1 :
+            Y += 1
+            if results_dic[dog][3] is 1: E += 1
+
+    # D : Number of Not-a-Dog Images. Can be calculated at the end with a simple difference 
+    # instead of using an if-elif structure with the computation of B : Number of Dog Images.
+    D = Z - B
+    results_stats_dic['n_images'] = int(Z)
+    results_stats_dic['n_dogs_img'] = int(A)
+    results_stats_dic['n_notdogs_img'] = int(C)
+
+    # Compute the percentages for the dictionary results_stats_dic.
+
+    # Objective 1_a : % of Correctly Classified Dog Images, (A/B) * 100.
+    results_stats_dic['pct_correct_dogs'] = (A/B) * 100
+    # Objective 1_b : % of Correctly Classified Not-a-Dog Images, (C/D) * 100.
+    results_stats_dic['pct_correct_notdogs'] = (C/D) * 100
+    # Objective 2   : % of Correctly Classified Dog Breeds, (E/B) * 100.
+    results_stats_dic['pct_correct_breed'] = (E/B) * 100
+    # Optional      : % of Label Matches, (Y/Z) * 100.
+    results_stats_dic['pct_label_matches'] = (Y/Z) * 100
+
+    return results_stats_dic
