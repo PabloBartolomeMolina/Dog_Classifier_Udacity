@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND/intropylab-classifying-images/print_functions_for_lab_checks.py
 #                                                                             
-# PROGRAMMER: Jennifer S.                                                    
+# PROGRAMMER: Jennifer S.  // Pablo Bartolomé Molina                                                  
 # DATE CREATED: 05/14/2018                                  
-# REVISED DATE:             <=(Date Revised - if any)                         
+# REVISED DATE: 11/08/2024                       
 # PURPOSE:  This set of functions can be used to check your code after programming 
 #           each function. The top section of each part of the lab contains
 #           the section labeled 'Checking your code'. When directed within this
@@ -68,7 +68,7 @@ def check_creating_pet_image_labels(results_dic):
             # prints only first 10 labels
             if n < stop_point:
                 print("{:2d} key: {:>30}  label: {:>26}".format(n+1, key,
-                      results_dic[key][0]) )
+                      results_dic[key]) )
 
                 # Increments counter
                 n += 1
