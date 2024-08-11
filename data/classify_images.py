@@ -3,7 +3,7 @@
 # */AIPND-revision/intropyproject-classify-pet-images/classify_images.py
 #                                                                             
 # PROGRAMMER: Pablo Bartolomé Molina
-# DATE CREATED: 04/08/2024, 18:40 CEST, 07/08/2024, 22:10PM CEST                               
+# DATE CREATED: 04/08/2024, 18:40 CEST, 07/08/2024, 22:10 CEST, 11/08/2024, 20:30 CEST                               
 # REVISED DATE: 
 # PURPOSE: Create a function classify_images that uses the classifier function 
 #          to create the classifier labels and then compares the classifier 
@@ -79,7 +79,7 @@ def classify_images(images_dir, results_dic, model):
     for imagepath in filename_list:
       img_path = images_dir + imagepath
       # Convert the returned value into lowercases to avoid false negatives in the identification.
-      classed_item = classifier(img_path, model).lower()
+      classed_item = classifier(img_path, model).lower().strip()
       class_list.append(classed_item)
     
     # Debugging purposes in case we have different number of previous labels and classifier labels.
