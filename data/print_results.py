@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Pablo Bartolomé Molina
+# DATE CREATED: 12/08/2024, 16:35 CEST 
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -62,5 +62,37 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
+    # Prints summary statistics over the run.
+    print("\n\n*** Results Summary for CNN Model Architecture: ", model.upper(),  "***")
+    print(f"Number of Images: {results_stats_dic['n_images']}")
+    print(f"Number of Dog Images: {results_stats_dic['n_dogs_img']}")
+    print(f"Number of Not-a-Dog Images: {results_stats_dic['n_notdogs_img']}")
+    # Prints percentages statistics.
+    print(f"Percentage of Correctly Classified Dog Images: {results_stats_dic['pct_correct_dogs']}")
+    print(f"Percentage of Correctly Classified Not-a-Dog Images: {results_stats_dic['pct_correct_notdogs']}")
+    print(f"Percentage of Correctly Identified Dog Breeds: {results_stats_dic['pct_correct_breed']}")
+    print(f"Percentage of Label Matches: {results_stats_dic['pct_label_matches']}")
+
+    # IF print_incorrect_dogs == True AND there were images incorrectly 
+    # classified as dogs or vice versa - print out these cases
+    if (print_incorrect_dogs and
+        ( (results_stats_dic['n_dogs_img'] + results_stats_dic['n_notdogs_img']) != results_stats_dic['n_images'] )):
+        print("\nINCORRECT Dog/NOT Dog Assignments:")
+
+        # Prints incorrectly classified dogs in results_dic.
+        for key in results_dic:
+            if results_dic[key][0] != results_dic[key][1] :
+                print(f"Real: {results_dic[key][0]}   Classifier: {results_dic[key][1]}")
+
+    # IF print_incorrect_breed == True AND there were dogs whose breeds 
+    # were incorrectly classified - print out these cases                    
+    if (print_incorrect_breed and 
+        (results_stats_dic['n_dogs_img'] != results_stats_dic['n_notdogs_img']) ):
+        print("\nINCORRECT Dog Breed Assignment:")
+
+        # Prints incorrectly classified breeds results_dic.
+        for key in results_dic:
+            # Pet Image Label is-a-Dog, classified as-a-dog but is WRONG breed.
+            if ( sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0 ):
+                print(f"Real: {results_dic[key][0]}   Classifier: {results_dic[key][1]}")
                 
