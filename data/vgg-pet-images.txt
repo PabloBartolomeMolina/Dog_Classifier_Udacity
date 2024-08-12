@@ -2,59 +2,19 @@ Command Line Arguments:
      dir = pet_images/ 
     arch = vgg 
  dogfile = dognames.txt
-German_shepherd_dog_04890.jpg: german shepherd dog
-Rabbit_002.jpg: rabbit
-Beagle_01125.jpg: beagle
-Great_dane_05320.jpg: great dane
-polar_bear_04.jpg: polar bear
-cat_02.jpg: cat
-Basenji_00974.jpg: basenji
-Golden_retriever_05223.jpg: golden retriever
-Boston_terrier_02259.jpg: boston terrier
-Golden_retriever_05195.jpg: golden retriever
-Cocker_spaniel_03750.jpg: cocker spaniel
-Miniature_schnauzer_06884.jpg: miniature schnauzer
-gecko_80.jpg: gecko
-Saint_bernard_08010.jpg: saint bernard
-Beagle_01170.jpg: beagle
-Boston_terrier_02303.jpg: boston terrier
-Boston_terrier_02285.jpg: boston terrier
-German_shorthaired_pointer_04986.jpg: german shorthaired pointer
-Boxer_02426.jpg: boxer
-Great_pyrenees_05435.jpg: great pyrenees
-Golden_retriever_05182.jpg: golden retriever
-Beagle_01141.jpg: beagle
-skunk_029.jpg: skunk
-Great_pyrenees_05367.jpg: great pyrenees
-Basenji_00963.jpg: basenji
-gecko_02.jpg: gecko
-Saint_bernard_08036.jpg: saint bernard
-fox_squirrel_01.jpg: fox squirrel
-great_horned_owl_02.jpg: great horned owl
-Dalmatian_04037.jpg: dalmatian
-German_shepherd_dog_04931.jpg: german shepherd dog
-cat_01.jpg: cat
-Collie_03797.jpg: collie
-Dalmatian_04017.jpg: dalmatian
-Dalmatian_04068.jpg: dalmatian
-Golden_retriever_05257.jpg: golden retriever
-Poodle_07956.jpg: poodle
-Poodle_07927.jpg: poodle
-cat_07.jpg: cat
-Basset_hound_01034.jpg: basset hound
 
 Pet Image Label Dictionary has 40 key-value pairs.
 Below are 10 of them:
- 1 key:  German_shepherd_dog_04890.jpg  label:                          g
- 2 key:                 Rabbit_002.jpg  label:                          r
- 3 key:               Beagle_01125.jpg  label:                          b
- 4 key:           Great_dane_05320.jpg  label:                          g
- 5 key:              polar_bear_04.jpg  label:                          p
- 6 key:                     cat_02.jpg  label:                          c
- 7 key:              Basenji_00974.jpg  label:                          b
- 8 key:     Golden_retriever_05223.jpg  label:                          g
- 9 key:       Boston_terrier_02259.jpg  label:                          b
-10 key:     Golden_retriever_05195.jpg  label:                          g
+ 1 key:  German_shepherd_dog_04890.jpg  label:        german shepherd dog
+ 2 key:                 Rabbit_002.jpg  label:                     rabbit
+ 3 key:               Beagle_01125.jpg  label:                     beagle
+ 4 key:           Great_dane_05320.jpg  label:                 great dane
+ 5 key:              polar_bear_04.jpg  label:                 polar bear
+ 6 key:                     cat_02.jpg  label:                        cat
+ 7 key:              Basenji_00974.jpg  label:                    basenji
+ 8 key:     Golden_retriever_05223.jpg  label:           golden retriever
+ 9 key:       Boston_terrier_02259.jpg  label:             boston terrier
+10 key:     Golden_retriever_05195.jpg  label:           golden retriever
 
      MATCH:
 
@@ -370,4 +330,4 @@ INCORRECT Dog Breed Assignment:
 Real: beagle   Classifier: walker hound, walker foxhound
 Real: great pyrenees   Classifier: kuvasz
 
-** Total Elapsed Runtime: 0:0:49
+** Total Elapsed Runtime: 0:0:54

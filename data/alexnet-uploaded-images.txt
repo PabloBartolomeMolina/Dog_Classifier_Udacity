@@ -2,17 +2,13 @@ Command Line Arguments:
      dir = uploaded_images/ 
     arch = alexnet 
  dogfile = dognames.txt
-golden_retriever_02.jpg: golden retriever
-table_01.jpg: table
-golden_retriever_01.jpg: golden retriever
-crocodile_01.jpg: crocodile
 
 Pet Image Label Dictionary has 4 key-value pairs.
 Below are 4 of them:
- 1 key:        golden_retriever_02.jpg  label:                          g
- 2 key:                   table_01.jpg  label:                          t
- 3 key:        golden_retriever_01.jpg  label:                          g
- 4 key:               crocodile_01.jpg  label:                          c
+ 1 key:        golden_retriever_02.jpg  label:           golden retriever
+ 2 key:                   table_01.jpg  label:                      table
+ 3 key:        golden_retriever_01.jpg  label:           golden retriever
+ 4 key:               crocodile_01.jpg  label:                  crocodile
 
      MATCH:
 
@@ -71,5 +67,8 @@ Percentage of Correctly Classified Dog Images: 100.0
 Percentage of Correctly Classified Not-a-Dog Images: 100.0
 Percentage of Correctly Identified Dog Breeds: 50.0
 Percentage of Label Matches: 50.0
+
+INCORRECT Dog Breed Assignment:
+Real: golden retriever   Classifier: blenheim spaniel
 
 ** Total Elapsed Runtime: 0:0:1
