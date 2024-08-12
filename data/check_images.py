@@ -4,7 +4,7 @@
 #
 # TODO 0: Add your information below for Programmer & Date Created.                                                                             
 # PROGRAMMER:  Pablo Bartolomé Molina
-# DATE CREATED: 04/08/2024, 11:40AM CEST, 04/08/2024, 17:10 CEST, 04/08/2024, 18:10 CEST
+# DATE CREATED: 04/08/2024, 11:40AM CEST, 04/08/2024, 17:10 CEST, 04/08/2024, 18:10 CEST, 04/08/2024, 20:00 CEST
 # REVISED DATE: 
 # PURPOSE: Classifies pet images using a pretrained CNN model, compares these
 #          classifications to the true identity of the pets in the images, and
@@ -113,7 +113,7 @@ def main():
     #      print_results(results, results_stats, in_arg.arch, True, True)
     # Prints summary results, incorrect classifications of dogs (if requested)
     # and incorrectly classified breeds (if requested)
-    print_results(results, results_stats, None, True, True)
+    print_results(results, results_stats,  in_arg.arch, True, True)
     
     # TODO 0: Measure total program runtime by collecting end time
     end_time = time()

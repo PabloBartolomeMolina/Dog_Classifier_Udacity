@@ -103,9 +103,13 @@ def calculates_results_stats(results_dic):
     # D : Number of Not-a-Dog Images. Can be calculated at the end with a simple difference 
     # instead of using an if-elif structure with the computation of B : Number of Dog Images.
     D = Z - B
+    
     results_stats_dic['n_images'] = int(Z)
-    results_stats_dic['n_dogs_img'] = int(A)
-    results_stats_dic['n_notdogs_img'] = int(C)
+    results_stats_dic['n_dogs_img'] = int(B)
+    results_stats_dic['n_notdogs_img'] = int(D)
+    results_stats_dic['n_correct_dogs'] = int(A)
+    results_stats_dic['n_correct_notdogs'] = int(C)
+    results_stats_dic['n_correct_breed'] = int(E)
 
     # Compute the percentages for the dictionary results_stats_dic.
 

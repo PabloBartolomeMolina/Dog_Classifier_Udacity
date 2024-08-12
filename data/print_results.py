@@ -76,18 +76,18 @@ def print_results(results_dic, results_stats_dic, model,
     # IF print_incorrect_dogs == True AND there were images incorrectly 
     # classified as dogs or vice versa - print out these cases
     if (print_incorrect_dogs and
-        ( (results_stats_dic['n_dogs_img'] + results_stats_dic['n_notdogs_img']) != results_stats_dic['n_images'] )):
+        ( (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs']) != results_stats_dic['n_images'] )):
         print("\nINCORRECT Dog/NOT Dog Assignments:")
 
         # Prints incorrectly classified dogs in results_dic.
         for key in results_dic:
-            if results_dic[key][0] != results_dic[key][1] :
+            if (results_dic[key][3] == 1 and results_dic[key][4] == 0) or  (results_dic[key][3] == 0 and results_dic[key][4] == 1):
                 print(f"Real: {results_dic[key][0]}   Classifier: {results_dic[key][1]}")
 
     # IF print_incorrect_breed == True AND there were dogs whose breeds 
     # were incorrectly classified - print out these cases                    
     if (print_incorrect_breed and 
-        (results_stats_dic['n_dogs_img'] != results_stats_dic['n_notdogs_img']) ):
+        (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']) ):
         print("\nINCORRECT Dog Breed Assignment:")
 
         # Prints incorrectly classified breeds results_dic.

@@ -49,7 +49,7 @@ def get_pet_labels(image_dir):
       # Raw filename to be properly formatted as label.
       label = filename
       # Replace underscores with spaces and convert to lowercase.
-      label = filename.replace('_', ' ').lower()
+      label = filename.replace('_', ' ').lower().strip()
       # Split the string into words. This allows to easily remove all characters that are not letter.
       words = label.split()
       # Filter out words including symbols and/or numbers and strip extra spaces.
@@ -57,11 +57,12 @@ def get_pet_labels(image_dir):
       words = [word.strip() for word in words if word.isalpha()]
       # Join the words back into a single string with spaces between them.
       label = ' '.join(words)
+      tmp_list = [label]  # Formatting to make easier the later handling of information.
       # New element in the dictionary including key and label in the requested format.
-      results_dic[filename] = label
+      results_dic[filename] = tmp_list
     
     # Debug purpose, print each pair key-element.
-    for key, value in results_dic.items():
-      print(f'{key}: {value}')
+    #for key, value in results_dic.items():
+      #print(f'{key}: {value}')
 
     return results_dic

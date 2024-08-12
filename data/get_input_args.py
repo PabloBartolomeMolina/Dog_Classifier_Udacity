@@ -3,7 +3,7 @@
 # */AIPND-revision/intropyproject-classify-pet-images/get_input_args.py
 #                                                                             
 # PROGRAMMER: Pablo Bartolomé Molina
-# DATE CREATED: 04/08/2024, 12:00 AM, CET                                    
+# DATE CREATED: 04/08/2024, 12:00 AM, CET                                   
 # REVISED DATE: 
 # PURPOSE: Create a function that retrieves the following 3 command line inputs 
 #          from the user using the Argparse Python module. If the user fails to 
